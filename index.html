@@ -2,103 +2,39 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thirukkural en Français</title>
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #e67e22;
-            --bg-color: #f4f7f6;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background-color: var(--bg-color);
-            color: var(--primary-color);
-            margin: 0;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px 0;
-            background: linear-gradient(135deg, #2c3e50, #4ca1af);
-            color: white;
-            border-radius: 10px;
-            margin-bottom: 30px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .kural-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-            border-left: 5px solid var(--accent-color);
-        }
-
-        .tamil {
-            font-size: 1.4em;
-            color: #000;
-            margin-bottom: 15px;
-            font-weight: bold;
-            display: block;
-        }
-
-        .transliteration {
-            font-style: italic;
-            color: #7f8c8d;
-            margin-bottom: 20px;
-            font-size: 0.95em;
-        }
-
-        .french-translation {
-            font-size: 1.2em;
-            color: #2c3e50;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-
-        .number {
-            font-weight: bold;
-            color: var(--accent-color);
-        }
-    </style>
+    <title>Thirukkural Français</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
     <h1>திருக்குறள் - Thirukkural</h1>
-    <p>La Sagesse Tamoule en Français</p>
+    <input type="text" id="search" placeholder="Rechercher un numéro ou un mot...">
 </header>
 
-<div class="container">
-    
-    <!-- Exemple de Kural -->
-    <div class="kural-card">
-        <span class="number">Kural 1</span>
-        <div class="tamil">
-            அகர முதல எழுத்தெல்லாம் ஆதி<br>
-            பகவன் முதற்றே உலகு.
-        </div>
-        <div class="transliteration">
-            Akara mudhala ezhuthellam aadhi<br>
-            Bhagavan mudhatre ulagu.
-        </div>
-        <div class="french-translation">
-            <strong>Traduction :</strong> De même que la lettre "A" est à la tête de toutes les lettres, ainsi l'Éternel est à la tête du monde.
-        </div>
-    </div>
-
-    <!-- Ajoutez d'autres kural-card ici -->
-
+<div id="kural-container" class="container">
+    <!-- Les Kurals s'afficheront ici automatiquement -->
 </div>
 
+<script>
+    // Charger les données depuis le fichier JSON
+    fetch('data.json')
+        .then(response => response.json())
+        .then(data => {
+            const container = document.getElementById('kural-container');
+            
+            data.forEach(kural => {
+                const card = document.createElement('div');
+                card.className = 'kural-card';
+                card.innerHTML = `
+                    <span class="number">Kural ${kural.number}</span>
+                    <div class="chapter">${kural.chapter_fr}</div>
+                    <div class="tamil">${kural.tamil.replace('\n', '<br>')}</div>
+                    <div class="french-translation">${kural.french}</div>
+                `;
+                container.appendChild(card);
+            });
+        });
+</script>
 </body>
 </html>
