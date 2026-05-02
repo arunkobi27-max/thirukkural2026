@@ -3,7 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <title>Thirukkural Français</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+    /* Palette de couleurs "Vieux Manuscrit" */
+:root {
+    --bg-paper: #f2e9d9;       /* Beige papier ancien */
+    --kural-bg: #fdfaf1;      /* Fond de carte crème */
+    --accent-brown: #8b5a2b;   /* Marron chaud */
+    --text-main: #3e2723;      /* Marron très foncé (presque noir) */
+    --border-color: #d7c4a3;   /* Bordure parchemin */
+}
+
+body {
+    background-color: var(--bg-paper);
+    background-image: radial-gradient(#e5d5b7 1px, transparent 1px);
+    background-size: 20px 20px; /* Petit effet de texture papier */
+    font-family: 'Georgia', serif;
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px double var(--accent-brown);
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    max-width: 800px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: var(--accent-brown);
+    margin-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+}
+
+.kural-card {
+    background-color: var(--kural-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Effet de bordure décorative sur le côté */
+.kural-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background-color: var(--accent-brown);
+}
+
+.number {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    color: var(--accent-brown);
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.chapter-title {
+    font-style: italic;
+    font-size: 1.1em;
+    color: #6d4c41;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.tamil {
+    font-size: 1.5em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.french-translation {
+    font-size: 1.15em;
+    line-height: 1.5;
+    padding-top: 15px;
+    border-top: 1px dashed var(--border-color);
+    text-align: justify;
+}
+
+/* Barre de recherche style ancien */
+input#search {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid var(--accent-brown);
+    background: #fffcf5;
+    border-radius: 20px;
+    outline: none;
+    font-family: serif;
+}
+ </style>       
 </head>
 <body>
 
